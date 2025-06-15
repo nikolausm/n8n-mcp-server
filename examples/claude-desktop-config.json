@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "n8n": {
+      "command": "node",
+      "args": ["/path/to/n8n-mcp-server/dist/index.js"],
+      "env": {
+        "N8N_URL": "https://your-subdomain.app.n8n.cloud",
+        "N8N_API_KEY": "your-api-key-here"
+      }
+    }
+  }
+}
