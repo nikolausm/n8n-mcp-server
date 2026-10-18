@@ -37,7 +37,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
   try {
     const { name, arguments: args } = request.params;
-    const result = await handleToolCall(name, args, n8nClient);
+    const result = await handleToolCall(name, args ?? {}, n8nClient);
     return {
       content: [
         {
@@ -49,6 +49,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : "Unknown error occurred";
     return {
+      isError: true,
       content: [
         {
           type: "text",

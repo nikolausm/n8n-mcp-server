@@ -17,7 +17,7 @@ MCP (Model Context Protocol) server for n8n workflow automation. This server ena
 
 ## Prerequisites
 
-- Node.js 18 or higher
+- Node.js 20 or higher
 - n8n instance with API access enabled
 - n8n API key
 
@@ -152,6 +152,8 @@ N8N_URL=https://your-instance.com N8N_API_KEY=your-key npm start
 ```bash
 npm test
 ```
+
+The protocol tests start the built server over stdio and do not contact an n8n instance.
 
 ## Security Notes
 
