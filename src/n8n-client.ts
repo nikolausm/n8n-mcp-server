@@ -1,5 +1,6 @@
 import axios, { AxiosInstance } from "axios";
 import { z } from "zod";
+import { ObjectRecordSchema } from "./schemas.js";
 
 // API response schemas
 const WorkflowSchema = z.object({
@@ -9,8 +10,8 @@ const WorkflowSchema = z.object({
   createdAt: z.string(),
   updatedAt: z.string(),
   nodes: z.array(z.any()),
-  connections: z.record(z.any()),
-  settings: z.record(z.any()).optional(),
+  connections: ObjectRecordSchema,
+  settings: ObjectRecordSchema.optional(),
   staticData: z.any().optional(),
   tags: z.array(z.string()).optional(),
 });

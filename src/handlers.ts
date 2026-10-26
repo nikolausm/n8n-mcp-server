@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { N8nClient } from "./n8n-client.js";
+import { ObjectRecordSchema } from "./schemas.js";
 
 // Schema definitions for validation
 const ListWorkflowsSchema = z.object({
@@ -16,9 +17,9 @@ const WorkflowIdSchema = z.object({
 const CreateWorkflowSchema = z.object({
   name: z.string(),
   nodes: z.array(z.any()),
-  connections: z.record(z.any()),
+  connections: ObjectRecordSchema,
   active: z.boolean().optional().default(false),
-  settings: z.record(z.any()).optional(),
+  settings: ObjectRecordSchema.optional(),
   tags: z.array(z.string()).optional(),
 });
 
@@ -26,15 +27,15 @@ const UpdateWorkflowSchema = z.object({
   workflowId: z.string(),
   name: z.string().optional(),
   nodes: z.array(z.any()).optional(),
-  connections: z.record(z.any()).optional(),
+  connections: ObjectRecordSchema.optional(),
   active: z.boolean().optional(),
-  settings: z.record(z.any()).optional(),
+  settings: ObjectRecordSchema.optional(),
   tags: z.array(z.string()).optional(),
 });
 
 const ExecuteWorkflowSchema = z.object({
   workflowId: z.string(),
-  data: z.record(z.any()).optional(),
+  data: ObjectRecordSchema.optional(),
 });
 
 const GetExecutionsSchema = z.object({
