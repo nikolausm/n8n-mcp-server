@@ -154,6 +154,8 @@ npm test
 ```
 
 The protocol tests start the built server over stdio and do not contact an n8n instance.
+Schema regression tests use a mocked client and HTTP adapter. GitHub CI runs the
+offline tests and dependency audit on Node.js 20 and 24 without API credentials.
 
 ## Security Notes
 
